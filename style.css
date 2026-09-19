@@ -1,0 +1,208 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #07110d;
+  --card: #0d1b15;
+  --card-light: #13271e;
+  --primary: #4ade80;
+  --primary-dark: #22c55e;
+  --text: #f0fdf4;
+  --muted: #9ca3af;
+  --grid: rgba(74, 222, 128, 0.08);
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:
+    radial-gradient(circle at top, #123522 0%, var(--bg) 45%),
+    var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 20px;
+}
+
+.game-container {
+  width: min(100%, 650px);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 4px;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: clamp(2rem, 7vw, 3rem);
+}
+
+.score-board {
+  display: flex;
+  gap: 10px;
+}
+
+.score-board div {
+  min-width: 95px;
+  padding: 10px 14px;
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.score-board span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.score-board strong {
+  display: block;
+  color: var(--primary);
+  font-size: 1.4rem;
+  margin-top: 3px;
+}
+
+.game-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--card);
+  border: 2px solid rgba(74, 222, 128, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  background-color: #091710;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 5% 5%;
+}
+
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: rgba(5, 15, 10, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.game-overlay.hidden {
+  display: none;
+}
+
+.game-overlay h2 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.game-overlay p {
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+#startButton {
+  border: none;
+  border-radius: 10px;
+  padding: 13px 28px;
+  color: #052e16;
+  background: var(--primary);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+#startButton:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.controls {
+  display: none;
+  margin: 20px auto 10px;
+  text-align: center;
+}
+
+.control-btn {
+  width: 55px;
+  height: 55px;
+  margin: 3px;
+  border: 1px solid rgba(74, 222, 128, 0.25);
+  border-radius: 12px;
+  background: var(--card-light);
+  color: var(--primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.control-btn:active {
+  transform: scale(0.92);
+  background: #1b3b2c;
+}
+
+.instructions {
+  margin-top: 15px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.instructions strong {
+  color: var(--text);
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+
+  .game-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .score-board {
+    width: 100%;
+  }
+
+  .score-board div {
+    flex: 1;
+  }
+
+  .controls {
+    display: block;
+  }
+  }
